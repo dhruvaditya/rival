@@ -7,11 +7,12 @@ void main() => runApp(const MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  static const appTitle = 'My Indian Flag';
+  static const appTitle = 'Indian Flag';
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: appTitle,
       home: MyHomePage(title: appTitle),
     );
@@ -26,9 +27,12 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(title)),
+      appBar: AppBar(title: Text(title),backgroundColor: Colors.orange[600],),
       body: const Center(
-        child: Text('My Page!',),
+        child: Center(child: CircleAvatar(backgroundImage: AssetImage('assets/flag1.gif'),radius: 150,),
+
+        ),
+
       ),
       drawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
@@ -45,7 +49,7 @@ class MyHomePage extends StatelessWidget {
               child: Text('Drawer Header'),
             ),
             ListTile(
-              title: const Text('Item 1'),
+                title: const Text('Item 1'),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -70,6 +74,33 @@ class MyHomePage extends StatelessWidget {
             )
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.green,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Business',
+            backgroundColor: Colors.green,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'School',
+            backgroundColor: Colors.purple,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+            backgroundColor: Colors.pink,
+          ),
+        ],
+        // currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        // onTap: _onItemTapped,
       ),
     );
   }
